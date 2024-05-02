@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'back',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'back',
     'ninja_jwt',
     'corsheaders', #新添加
 ]
@@ -45,14 +45,29 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',   #新添加
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',   #新添加
+    # 'corsheaders.middleware.CorsMiddleware',   #新添加
     'django.middleware.common.CommonMiddleware',  #新添加
 ]
+
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = ('*')
+CORS_ALLOW_METHODS =( 'DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT', 'VIEW')
+CORS_ALLOW_HEADERS = ('XMLHttpRequest', 'X_FILENAME', 'accept-encoding', 'authorization', 'content-type', 'dnt', 'origin', 'user-agent', 'x-csrftoken', 'x-requested-with')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+CORS_EXPOSE_HEADERS = ['Authorization']
+
 
 ROOT_URLCONF = 'final.urls'
 
@@ -79,9 +94,17 @@ WSGI_APPLICATION = 'final.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+        "default": {
+        "ENGINE": "django.db.backends.mysql", #C:\ProgramData\MySQL\MySQL Server 8.0\Data
+        "NAME": "DDDD",
+        "USER": "root",
+        "PASSWORD": "1234",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
     }
 }
 
@@ -126,3 +149,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'back.newuser'
