@@ -27,8 +27,7 @@ service.interceptors.request.use(
 
 //响应拦截器
 service.interceptors.response.use(
-  response => {
-    //服务器响应失败在干什么,因为咱们真实服务器返回code  20000也有可能200
+  async response => {
     if (response.status !== 201 && response.status != 200) {
       ElMessage({
         message: response.statusText || 'Error',
@@ -36,25 +35,22 @@ service.interceptors.response.use(
         duration: 5 * 1000
       })
 
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (response.status === 404 || response.status === 50012 || response.status === 50014) {
-        // to re-login
-        ElMessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
+        await ElMessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
           confirmButtonText: 'Re-Login',
           cancelButtonText: 'Cancel',
           type: 'warning'
-        }).then(() => {
-          localStorage.dispatch('user/resetToken').then(() => {
-            location.reload()
-          })
+        })
+        localStorage.dispatch('user/resetToken').then(() => {
+          location.reload()
         })
       }
-      return ''
+      return Promise.reject(new Error('Response error'))
     } else {
-      //服务器相应成功干什么
-      return response
+      return Promise.resolve(response)
     }
   },
+
   error => {
     console.log('err' + error) // for debug
     ElMessage({
