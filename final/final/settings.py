@@ -105,14 +105,18 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-        "default": {
-        "ENGINE": "django.db.backends.mysql", #C:\ProgramData\MySQL\MySQL Server 8.0\Data
-        "NAME": "DDDD",
-        "USER": "root",
-        "PASSWORD": "1234",
-        # "PASSWORD": "root",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+    #     "default": {
+    #     "ENGINE": "django.db.backends.mysql", #C:\ProgramData\MySQL\MySQL Server 8.0\Data
+    #     "NAME": "DDDD",
+    #     "USER": "root",
+    #     "PASSWORD": "1234",
+    #     # "PASSWORD": "root",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "3306",
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'last.db',
     }
 }
 
