@@ -28,7 +28,7 @@ DEBUG = True
 
 
 #
-ALLOWED_HOSTS = ['192.168.8.115', 'www.thezbr.org', 'thezbr.org', 'www.thezbr.com', 'thezbr.com']
+ALLOWED_HOSTS = ['192.168.8.115', 'www.thezbr.org', 'thezbr.org', 'www.thezbr.com', 'thezbr.com', '3.27.154.23', 'localhost']
 
 
 
