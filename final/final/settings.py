@@ -28,7 +28,7 @@ DEBUG = True
 
 
 #
-ALLOWED_HOSTS = ['192.168.8.115', '*', ]
+ALLOWED_HOSTS = ['192.168.8.115', 'www.thezbr.org', 'thezbr.org', 'www.thezbr.com', 'thezbr.com']
 
 
 
@@ -164,3 +164,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'back.newuser'
+
