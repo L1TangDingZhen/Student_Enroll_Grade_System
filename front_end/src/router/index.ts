@@ -4,6 +4,7 @@ import My from '../views/My.vue'
 import Grade from '../views/Grade.vue'
 import Course from '../views/Course.vue'
 import Enroll from '../views/Enroll.vue'
+import Homeview from '../views/HomeView.vue'
 import Axios from 'axios'
 import Register from '../views/Register.vue'
 // const API_URL = 'http://127.0.0.1:8000/api'
@@ -18,7 +19,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Login
+      component: Homeview
     },
     {
       path: '/music',
