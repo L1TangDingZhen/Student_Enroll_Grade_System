@@ -1,6 +1,6 @@
 <template>
   <div class="home-view">
-    <h1>hello</h1>
+    <h1>Hello</h1>
     <router-link to="/login">
       <input type="button" value="Student_Enroll_Grade_System">
     </router-link>
