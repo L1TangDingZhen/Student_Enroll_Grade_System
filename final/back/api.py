@@ -2,7 +2,7 @@ from datetime import date, datetime, timedelta
 from django.utils import timezone
 from ninja import NinjaAPI, Router
 from sympy import Sum
-from back.scheme import User, NoMessage, LoginSuccess, ErrorResponse, Course, Grade, UserChange, CourseChange, GradeChange, Enrollment, Me, TeacherCourse, CreateCourse, AvailableCourse, CreateCourseSchema, EnrollmentDetail, EnrolledStudentInfo
+from back.scheme import User, NoMessage, LoginSuccess, ErrorResponse, Course, Grade, UserChange, CourseChange, GradeChange, Enrollment, Me, TeacherCourse, CreateCourse, AvailableCourse, CreateCourseSchema, EnrollmentDetail, EnrolledStudentInfo, Login
 from back.models import newuser, course, grade, enrollment, available, enrollment
 from typing import List
 from ninja.security import django_auth, HttpBearer
@@ -17,6 +17,8 @@ import string
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.hashers import make_password, check_password
 from back.permission import IsTeacher
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 teacher_auth = IsTeacher()
 router = Router()
@@ -32,7 +34,8 @@ class GlobalAuth(HttpBearer):
 
 
 # api = NinjaAPI(auth=GlobalAuth()) #全局验证
-api = NinjaExtraAPI() #多出来一个token验证类
+api = NinjaExtraAPI(docs_decorator=staff_member_required) #多出来一个token验证类
+# authorised to login docs
 api.register_controllers(NinjaJWTDefaultController)
 
 
@@ -154,13 +157,13 @@ def me(request):
 
 
 @api.post('/login', response={200: LoginSuccess, 401: ErrorResponse}, auth=None)
-def login(request, info: User):
+def login(request, info: Login):
     # user = newuser.objects.filter(username=info.username).first()
     user = newuser.objects.filter(student_id=info.student_id).first()
     if user and check_password(info.password, user.password):
         expire = datetime.utcnow() + timedelta(minutes=JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
         token = jwt.encode({"sub": user.student_id, "exp": expire}, JWT_SECRET_KEY, algorithm="HS256")
-        return {"username": user.username, "token": token, 'student_id': user.student_id}
+        return {"token": token, 'student_id': user.student_id}
     return 401, {"message": "Username or password is incorrect"}
 
 

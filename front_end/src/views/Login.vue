@@ -2,13 +2,9 @@
   <div class="login-container">
     <h1>Login</h1>
     <form @submit.prevent="login">
-    <div class="form-group">
-        <label for="student-id">Student ID:</label>
-        <input id="student-id" v-model="credentials.student_id" type="text" placeholder="Enter student ID" required>
-    </div>
       <div class="form-group">
-        <label for="username">Username:</label>
-        <input id="username" v-model="credentials.username" type="text" placeholder="Enter username" required>
+          <label for="student-id">Student ID:</label>
+          <input id="student-id" v-model="credentials.student_id" type="text" placeholder="Enter student ID" required>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
@@ -16,7 +12,7 @@
       </div>
       <button type="submit">Login</button>
       <button type = 'button' @click="register">Register</button>
-      <p v-if="errorMessage">{{ errorMessage }}</p>
+        <p v-if="errorMessage">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -29,7 +25,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const credentials = ref({
-  username: '',
   password: '',
   student_id: ''  // 添加 student_id
 });
@@ -53,7 +48,17 @@ const login = async () => {
 };
 
 const register = async () => {
-  router.push
+  try {
+    const response = await reqRegister(credentials.value);
+    // 处理注册成功，如保存 token，跳转等
+    localStorage.setItem('token', response.data.token); // 保存 token
+    router.push('/register'); // Redirect to Register.vue route
+  } catch (error) {
+    console.error('Register error:', error);
+    // 在界面上显示错误提示
+    errorMessage.value = 'Register failed, please try again';
+    console.error('Register error:', error);
+  }
 };
 
 </script>

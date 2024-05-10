@@ -1,11 +1,18 @@
 from ninja import Schema
 from datetime import date
 from typing import Optional
+from pydantic import BaseModel
+
 class User(Schema):
     username : str
     password : str
     student_id : str
     # is_teacher : bool=False
+
+class Login(BaseModel):
+    student_id : str
+    password : str
+
 
 class Me(Schema):
     username : str
@@ -24,7 +31,7 @@ class NoMessage(Schema):
 
     
 class LoginSuccess(Schema):
-    username: str
+    student_id: str
     token: str
 
 class ErrorResponse(Schema):
