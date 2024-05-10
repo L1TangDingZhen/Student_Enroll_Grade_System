@@ -38,7 +38,7 @@ const login = async () => {
     const response = await reqLogin(credentials.value);
     // 处理登录成功，如保存 token，跳转等
     localStorage.setItem('token', response.data.token); // 保存 token
-    router.push({ name: 'my' }); // 跳转到首页或其他适当的路由
+    router.push({ name: 'register' });  // 使用命名路由跳转
   } catch (error) {
     console.error('Login error:', error);
     // 在界面上显示错误提示
