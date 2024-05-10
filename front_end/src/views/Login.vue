@@ -49,9 +49,6 @@ const login = async () => {
 
 const register = async () => {
   try {
-    const response = await reqRegister(credentials.value);
-    // 处理注册成功，如保存 token，跳转等
-    localStorage.setItem('token', response.data.token); // 保存 token
     router.push('/register'); // Redirect to Register.vue route
   } catch (error) {
     console.error('Register error:', error);
