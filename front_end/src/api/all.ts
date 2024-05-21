@@ -3,10 +3,10 @@ import request from "./request"
 import axios from 'axios';
 
 console.log("^^^^^^^6666^^^^^^^")
-console.log('Base API URL:', process.env.VUE_APP_API_BASE_URL);
+// console.log('Base API URL:', process.env.VUE_APP_API_BASE_URL);
 
 const apiClient = axios.create({
-    baseURL: process.env.VUE_APP_BASE_URL, // Setting the base URL for all requests
+    // baseURL: process.env.VUE_APP_BASE_URL, // Setting the base URL for all requests
     headers: {
         'Content-Type': 'application/json'
         // 'Authorization': 'Bearer ' + localStorage.getItem('token')

@@ -1,10 +1,14 @@
 <template>
   <div class="home-view">
     <h1>Hello</h1>
+    <router-link to="/spin">
+      <input type="button" value="Choose what eat today">
+    </router-link>
+
     <router-link to="/login">
       <input type="button" value="Student_Enroll_Grade_System">
     </router-link>
-    <!-- 显示当前时间 -->
+
     <p>{{ currentTime }}</p>
   </div>
 </template>
@@ -44,7 +48,9 @@ export default defineComponent({
 }
 
 input[type="button"] {
+  display: block;
   background-color: #444;
+  margin-bottom: 10px;
   color: white;
   border: none;
   padding: 10px;

@@ -7,6 +7,7 @@ import Enroll from '../views/Enroll.vue'
 import Homeview from '../views/HomeView.vue'
 import Axios from 'axios'
 import Register from '../views/Register.vue'
+import al from '../views/al.vue'
 // const API_URL = 'http://127.0.0.1:8000/api'
 
 // const axioInstance = Axios.create({
@@ -20,11 +21,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Homeview
-    },
-    {
-      path: '/music',
-      name: 'music',
-      component: () => import('../views/Music.vue')
     },
     {
       path: '/login',
@@ -55,7 +51,12 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component : Register
-    }
+    },
+    {
+      path: '/spin',
+      name: 'choose',
+      component : al
+    },
   ]
 })
 
