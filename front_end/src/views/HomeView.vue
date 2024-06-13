@@ -2,15 +2,15 @@
   <div class="home-view">
     <h1>Hello</h1>
     <router-link to="/spin">
-      <input type="button" value="Choose what eat today">
+      <button class="custom-button">Choose what eat today</button>
     </router-link>
 
     <router-link to="/login">
-      <input type="button" value="Student_Enroll_Grade_System">
+      <button class="custom-button">Student_Enroll_Grade_System</button>
     </router-link>
 
     <a href="https://github.com/L1TangDingZhen/Dotnet_Order_System" target="_blank">
-      <button class="link-button">Dotnet Order System</button>
+      <button class="custom-button">Dotnet Order System</button>
     </a>
 
     <p>{{ currentTime }}</p>
@@ -51,7 +51,7 @@ export default defineComponent({
   border-radius: 10px;
 }
 
-input[type="button"] {
+.custom-button {
   display: block;
   background-color: #444;
   margin-bottom: 10px;
@@ -60,9 +60,12 @@ input[type="button"] {
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-input[type="button"]:hover {
+.custom-button:hover {
   background-color: #555;
 }
 </style>
