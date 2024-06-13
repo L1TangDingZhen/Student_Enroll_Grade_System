@@ -9,6 +9,10 @@
       <input type="button" value="Student_Enroll_Grade_System">
     </router-link>
 
+    <a href="https://github.com/L1TangDingZhen/Dotnet_Order_System" target="_blank">
+      <button>Dotnet Order System</button>
+    </a>
+
     <p>{{ currentTime }}</p>
   </div>
 </template>
