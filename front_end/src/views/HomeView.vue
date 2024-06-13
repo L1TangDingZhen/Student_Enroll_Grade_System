@@ -10,7 +10,7 @@
     </router-link>
 
     <a href="https://github.com/L1TangDingZhen/Dotnet_Order_System" target="_blank">
-      <button>Dotnet Order System</button>
+      <button class="link-button">Dotnet Order System</button>
     </a>
 
     <p>{{ currentTime }}</p>
