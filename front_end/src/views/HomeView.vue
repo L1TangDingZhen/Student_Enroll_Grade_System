@@ -52,7 +52,7 @@ export default defineComponent({
 }
 
 .custom-button {
-  display: block;
+  display: inline-block; /* 使按钮的宽度与内容匹配 */
   background-color: #444;
   margin-bottom: 10px;
   color: white;
@@ -60,8 +60,6 @@ export default defineComponent({
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
   text-align: center;
 }
 
