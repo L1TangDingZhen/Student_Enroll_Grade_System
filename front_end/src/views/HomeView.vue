@@ -1,21 +1,17 @@
 <template>
   <div class="home-view">
     <h1>Hello</h1>
-    <div>
-      <router-link to="/spin">
-        <button class="custom-button">Choose what eat today</button>
-      </router-link>
-    </div>
-    <div>
-      <router-link to="/login">
-        <button class="custom-button">Student_Enroll_Grade_System</button>
-      </router-link>
-    </div>
-    <div>
-      <a href="https://github.com/L1TangDingZhen/Dotnet_Order_System" target="_blank">
-        <button class="custom-button">Dotnet Order System</button>
-      </a>
-    </div>
+    <router-link to="/spin">
+      <button class="custom-button">Choose what eat today</button>
+    </router-link>
+
+    <router-link to="/login">
+      <button class="custom-button">Student_Enroll_Grade_System</button>
+    </router-link>
+
+    <a href="https://github.com/L1TangDingZhen/Dotnet_Order_System" target="_blank">
+      <button class="custom-button">Dotnet Order System</button>
+    </a>
 
     <p>{{ currentTime }}</p>
   </div>
@@ -57,7 +53,6 @@ export default defineComponent({
 
 .custom-button {
   display: block;
-  width: 100%; /* 使按钮占据整个父容器的宽度 */
   background-color: #444;
   margin-bottom: 10px;
   color: white;
@@ -65,8 +60,8 @@ export default defineComponent({
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  width: 200px; /* 确保按钮宽度一致 */
   text-align: center;
-  box-sizing: border-box; /* 包括填充和边框在内的宽度计算 */
 }
 
 .custom-button:hover {
